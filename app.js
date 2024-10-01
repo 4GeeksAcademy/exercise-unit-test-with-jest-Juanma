@@ -1,23 +1,27 @@
-// One euro is:
+// Tasas de conversión
 let oneEuroIs = {
-    "JPY": 156.5, // japan yen
-    "USD": 1.07, // us dollar
-    "GBP": 0.87, // british pound
-}
+    "JPY": 156.5,  // 1 euro es 156.5 yenes japoneses
+    "USD": 1.07,   // 1 euro es 1.07 dólares estadounidenses
+    "GBP": 0.87    // 1 euro es 0.87 libras esterlinas
+};
 
-const fromEuroToDollar = function(valueInEuro) {
-    let valueInDollar = valueInEuro * 1.07;
-    return valueInDollar;
-}
-
+// Convertir de dólares a yenes
 const fromDollarToYen = function(valueInDollar) {
-    let valueInYen = valueInDollar * 149.03;
+    // Primero convertir de dólares a euros
+    let valueInEuro = valueInDollar / oneEuroIs.USD;
+    // Luego convertir de euros a yenes
+    let valueInYen = valueInEuro * oneEuroIs.JPY;
     return valueInYen;
 }
 
+// Convertir de yenes a libras esterlinas
 const fromYenToPound = function(valueInYen) {
-    let valueInPound = valueInYen * 0.0072;
-    return valueInPound; 
+    // Primero convertir de yenes a euros
+    let valueInEuro = valueInYen / oneEuroIs.JPY;
+    // Luego convertir de euros a libras esterlinas
+    let valueInPound = valueInEuro * oneEuroIs.GBP;
+    return valueInPound;
 }
 
-module.exports = { fromEuroToDollar, fromDollarToYen, fromYenToPound };
+module.exports = { sum, fromEuroToDollar, fromDollarToYen, fromYenToPound };
+

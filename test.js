@@ -1,17 +1,16 @@
-test("One euro should be 1.07 dollars", function() {
-    // Importar la función de app.js
-    const { fromEuroToDollar } = require('./app.js');
-    expect(fromEuroToDollar(3.5)).toBe(3.745);
-})
+// Importar las funciones
+const { fromEuroToDollar, fromDollarToYen, fromYenToPound } = require('./app.js');
 
-test("Conversion from USD to JPY (1 USD = 149.03 JPY)", function() {
-    // Importar la función de app.js
-    const { fromDollarToYen } = require('./app.js')
-    expect(fromDollarToYen(10)).toBe(1490.3);
-})
+// Prueba para convertir dólares a yenes
+test('Convertir 100 dólares a yenes japoneses', () => {
+    const yen = fromDollarToYen(100);
+    const expected = (100 / 1.07) * 156.5;  // Fórmula para convertir dólares a yenes
+    expect(yen).toBe(expected);
+});
 
-test("Conversion from JPY to GBP (1 JPY = 0.0072 GBP)", function() {
-    // Importar la función de app.js
-    const { fromYenToPound } = require('./app.js')
-    expect(fromYenToPound(1000)).toBe(7.2);
-})
+// Prueba para convertir yenes a libras esterlinas
+test('Convertir 10000 yenes a libras esterlinas', () => {
+    const pounds = fromYenToPound(10000);
+    const expected = (10000 / 156.5) * 0.87;  // Fórmula para convertir yenes a libras
+    expect(pounds).toBe(expected);
+});
