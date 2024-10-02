@@ -1,6 +1,12 @@
 // Importar las funciones
 const { fromEuroToDollar, fromDollarToYen, fromYenToPound } = require('./app.js');
 
+// Prueba para convertir euros a dolares 
+test("Un euro deberia ser 1.07 dolares", function() {
+    const { fromEuroToDollar } = require('./app.js');
+    expect(fromEuroToDollar(3.5)).toBe(3.745);
+})
+
 // Prueba para convertir dólares a yenes
 test('Convertir 100 dólares a yenes japoneses', () => {
     const yen = fromDollarToYen(100);
