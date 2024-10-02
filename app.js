@@ -5,6 +5,12 @@ let oneEuroIs = {
     "GBP": 0.87    // 1 euro es 0.87 libras esterlinas
 };
 
+// Convertir de Euro a Dolar
+const fromEuroToDollar = function(valueInEuro) {
+    let valueInDollar = valueInEuro * 1.07;
+    return valueInDollar;
+}
+
 // Convertir de dólares a yenes
 const fromDollarToYen = function(valueInDollar) {
     // Primero convertir de dólares a euros
@@ -23,5 +29,5 @@ const fromYenToPound = function(valueInYen) {
     return valueInPound;
 }
 
-module.exports = { sum, fromEuroToDollar, fromDollarToYen, fromYenToPound };
+module.exports = {fromEuroToDollar, fromDollarToYen, fromYenToPound };
 
